@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hola Drive</title>
+  </head>
+  <body>
+    <h1>Subir archivos</h1>
+    <form>
+        <input type="file" name="myFile">
+        <br>
+        <br>
+        <input type="button" id="submitBtn" value="Upload Files">
+        <label id="resp"></label>
+    </form>
+    <script>
+      document.getElementById('submitBtn').addEventListener('click',
+        function(e){
+          google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)
+        })
+        
+        function onSuccess(data){
+          document.getElementById('resp').innerHTML = "File Uploaded to the path " +data;
+        }
+       
+    </script>
+  </body>
+</html>
